@@ -1,10 +1,10 @@
-# cz-github-jira-conventional
+# cz-git-jira-conventional
 
-**cz-github-jira-conventional** is a plugin for the [**commitizen tools**](https://github.com/commitizen-tools/commitizen), a toolset that helps you to create [**conventional commit messages**](https://www.conventionalcommits.org/en/v1.0.0/). Since the structure of conventional commits messages is standardized they are machine readable and allow commitizen to automaticially calculate and tag [**semantic version numbers**](https://semver.org/) as well as create **CHANGELOG.md** files for your releases.
+**cz-git-jira-conventional** is a plugin for the [**commitizen tools**](https://github.com/commitizen-tools/commitizen), a toolset that helps you to create [**conventional commit messages**](https://www.conventionalcommits.org/en/v1.0.0/). Since the structure of conventional commits messages is standardized they are machine readable and allow commitizen to automaticially calculate and tag [**semantic version numbers**](https://semver.org/) as well as create **CHANGELOG.md** files for your releases.
 
 This plugin extends the commitizen tools by:
 - **require a Jira issue id** in the commit message
-- **create links to GitHub** commits in the CHANGELOG.md
+- **create links to Git** commits in the CHANGELOG.md
 - **create links to Jira** issues in the CHANGELOG.md
 
 When you call commitizen `commit` you will be required you to enter the scope of your commit as a Jira issue id (or multiple issue ids, prefixed or without prefix, see config below).
