@@ -7,7 +7,7 @@ from commitizen.cz.base import BaseCommitizen
 from commitizen.cz.utils import multiple_line_breaker, required_validator
 from commitizen.cz.exceptions import CzException
 
-__all__ = ["GithubJiraConventionalCz"]
+__all__ = ["GitJiraConventionalCz"]
 
 
 def parse_subject(text):
@@ -17,7 +17,7 @@ def parse_subject(text):
     return required_validator(text, msg="Subject is required.")
 
 
-class GithubJiraConventionalCz(BaseCommitizen):
+class GitJiraConventionalCz(BaseCommitizen):
     bump_pattern = defaults.bump_pattern
     bump_map = defaults.bump_map
     commit_parser = defaults.commit_parser
@@ -36,11 +36,11 @@ class GithubJiraConventionalCz(BaseCommitizen):
             "Please add the key jira_base_url to your .cz.yaml|json|toml config file."
         )
         quit()
-    if "github_repo" not in conf.settings:
-        print("Please add the key github_repo to your .cz.yaml|json|toml config file.")
+    if "git_repo" not in conf.settings:
+        print("Please add the key git_repo to your .cz.yaml|json|toml config file.")
         quit()
     jira_base_url = conf.settings["jira_base_url"]
-    github_repo = conf.settings["github_repo"]
+    git_repo = conf.settings["git_repo"]
     # if "change_type_map" not in conf.settings:
     change_type_map = {
         "feat": "Feat",
@@ -236,7 +236,7 @@ class GithubJiraConventionalCz(BaseCommitizen):
     def changelog_message_builder_hook(
         self, parsed_message: dict, commit: git.GitCommit
     ) -> dict:
-        """add github and jira links to the readme"""
+        """add git and jira links to the readme"""
         rev = commit.rev
         m = parsed_message["message"]
         if parsed_message["scope"]:
@@ -248,7 +248,7 @@ class GithubJiraConventionalCz(BaseCommitizen):
             )
         parsed_message[
             "message"
-        ] = f"{m} [{rev[:5]}](https://github.com/{self.github_repo}/commit/{commit.rev})"
+        ] = f"([{rev[:5]}]({self.git_repo}/commit/{commit.rev})) - {m}"
         return parsed_message
 
 
@@ -256,4 +256,4 @@ class InvalidAnswerError(CzException):
     ...
 
 
-discover_this = GithubJiraConventionalCz
+discover_this = GitJiraConventionalCz
