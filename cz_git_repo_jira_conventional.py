@@ -253,4 +253,4 @@ class GitRepoJiraConventionalCz(BaseCommitizen):
 
 
 class InvalidAnswerError(CzException):
-    ...cls
+    ...
