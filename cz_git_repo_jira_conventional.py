@@ -253,7 +253,4 @@ class GitRepoJiraConventionalCz(BaseCommitizen):
 
 
 class InvalidAnswerError(CzException):
-    ...
-
-
-discover_this = GitRepoJiraConventionalCz
+    ...cls
