@@ -18,5 +18,10 @@ setup(
     install_requires=["commitizen"],
     description="Extend the commitizen tools to create conventional commits and README that link to Jira and Git repo.",
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
+    entry_points={
+        "commitizen.plugin": [
+            "cz_git_repo_jira_conventional = cz_git_repo_jira_conventional:GitRepoJiraConventionalCz"
+        ]
+    }
 )
